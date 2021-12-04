@@ -29,6 +29,10 @@ application {
     mainClass = 'jdk11.encoding.issue.App'
 }
 
+compileJava.configure {
+    options.encoding = 'UTF-8'
+}
+
 tasks.named('test') {
     println(String.format("defaultCharacterEncoding=%s", getDefaultCharacterEncoding()));
     System.getProperties().findAll{k,v -> k.contains("encoding")}.forEach{k,v -> println(k+"="+v)}
