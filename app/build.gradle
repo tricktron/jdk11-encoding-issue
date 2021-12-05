@@ -33,6 +33,13 @@ compileJava.configure {
     options.encoding = 'UTF-8'
 }
 
+run.configure {
+    // change to your windows code page
+    // check it with `chcp` (`chcp.com`) on gitbash
+    allJvmArgs = ['-Dsun.stdout.encoding=cp437']
+}
+
+
 tasks.named('test') {
     println(String.format("defaultCharacterEncoding=%s", getDefaultCharacterEncoding()));
     System.getProperties().findAll{k,v -> k.contains("encoding")}.forEach{k,v -> println(k+"="+v)}
